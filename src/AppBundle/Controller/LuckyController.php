@@ -1,5 +1,5 @@
 <?php
-// src/AppBundle/Controller/LuckyController.php
+
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -9,14 +9,18 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class LuckyController
 {
     /**
-     * @Route("/lucky/number")
+     * @Route("/lucky/number/{count}")
      */
-    public function numberAction()
+    public function numberAction($count)
     {
-        $number = rand(0, 100);
+        $numbers = array();
+        for ($i = 0; $i < $count; $i++) {
+            $numbers[] = rand(0, 100);
+        }
+        $numbersList = implode(', ', $numbers);
 
         return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
+            '<html><body>Lucky numbers: '.$numbersList.'</body></html>'
         );
     }
 
@@ -33,4 +37,5 @@ class LuckyController
         return new JsonResponse($data);
     }
 }
+
 ?>
