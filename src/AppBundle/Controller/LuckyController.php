@@ -9,9 +9,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class LuckyController extends Controller
 {
-    /**
-     * @Route("/lucky/number/{count}")
-     */
     public function numberAction($count)
     {
         $numbers = array();
@@ -19,7 +16,6 @@ class LuckyController extends Controller
             $numbers[] = rand(0, 100);
         }
         $numbersList = implode(', ', $numbers);
-
 
         /*
         $html = $this->container->get('templating')->render(
@@ -37,9 +33,6 @@ class LuckyController extends Controller
         );
     }
 
-    /**
-     * @Route("/api/lucky/number")
-     */
     public function apiNumberAction()
     {
         $data = array(
