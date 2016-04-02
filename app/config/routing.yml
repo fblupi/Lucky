@@ -5,6 +5,8 @@ app:
 lucky_number:
     path:     /lucky/number/{count}
     defaults: { _controller: AppBundle:Lucky:number, count: 1 }
+    requirements:
+      count:  \d+
 
 lucky_apiNumber:
     path:     /api/lucky/number
